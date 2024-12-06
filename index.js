@@ -48,8 +48,14 @@ async function run() {
 
         // get all product 
 
-        app.get('/products',  async(req, res) => {           
+        app.get('/product-six',  async(req, res) => {           
             const products = await addProductCollection.find().limit(6).toArray();
+            res.send(products); 
+         })
+        //  no limit 
+
+         app.get('/products',  async(req, res) => {           
+            const products = await addProductCollection.find().toArray();
             res.send(products); 
          })
          
