@@ -82,9 +82,6 @@ async function run() {
 
  
 
-        //  delete single document 
-
-
         app.delete("/my-products/:id", async (req, res) => {
            
            try{
