@@ -5,10 +5,10 @@ const cors = require('cors')
 const port = process.env.PORT || 3000;
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 
+
+// middle ware 
 app.use(express.json())
 app.use(cors())
-
-
 
 
 
