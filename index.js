@@ -25,6 +25,7 @@ const client = new MongoClient(uri, {
 
 async function run() {
     const addProductCollection = client.db("equi-sports").collection("product");
+    const addReviewCollection = client.db("equi-sports").collection("review");
 
 
 
@@ -49,6 +50,13 @@ async function run() {
 
         app.get('/products',  async(req, res) => {           
             const products = await addProductCollection.find().toArray();
+            res.send(products); 
+         })
+         
+         // get all review 
+
+        app.get('/review',  async(req, res) => {           
+            const products = await addReviewCollection.find().toArray();
             res.send(products); 
          })
         //   find single product 
