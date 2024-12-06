@@ -58,10 +58,48 @@ async function run() {
              const query = { _id: new ObjectId(productId) } 
             const products = await addProductCollection.findOne(query);
             res.send(products); 
+         }) 
+
+        app.get('/my-product/:userEmail',  async(req, res) => {      
+            const {userEmail} = req.params
+            console.log(userEmail)
+            const query = { userEmail } 
+            const products = await addProductCollection.find(query).toArray();
+            res.send(products); 
+         }) 
+         
+
+        //  update equipment
+         
+         app.put('/my-product/:id', async(req, res) => {   
+            const id=req.params.id   
+            const filter={_id: new ObjectId(id)}
+             const  product  = req.body ; 
+              const query = { $set: product } 
+            const products =  await addProductCollection.updateOne(filter,query);
+            res.send(products); 
          })
 
  
 
+        //  delete single document 
+
+
+        app.delete("/my-products/:id", async (req, res) => {
+           
+           try{
+               const id = req.params.id;
+
+               const query = { _id: new ObjectId(id) };
+               const result = await addProductCollection.deleteOne(query);
+
+               res.send(result);
+           }
+           catch(error){
+            console.log(error)
+           }
+            
+        });
 
 
 
