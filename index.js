@@ -49,7 +49,7 @@ async function run() {
         // get all product 
 
         app.get('/products',  async(req, res) => {           
-            const products = await addProductCollection.find().toArray();
+            const products = await addProductCollection.find().limit(6).toArray();
             res.send(products); 
          })
          
