@@ -54,9 +54,19 @@ async function run() {
          })
         //  no limit 
 
-         app.get('/products',  async(req, res) => {           
-            const products = await addProductCollection.find().toArray();
-            res.send(products); 
+         app.get('/products',  async(req, res) => {    
+            const query=req.query.sort;
+            if(query){
+                const products = await addProductCollection.find().sort({"price":1}).toArray();
+                res.send(products); 
+
+            }else{
+                const products = await addProductCollection.find().toArray();
+                res.send(products); 
+
+            }            
+                 
+            
          })
          
          // get all review 
