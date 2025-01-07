@@ -61,7 +61,7 @@ async function run() {
                 res.send(products); 
 
             }else if(query == false){
-                const products = await addProductCollection.find().sort({"price":0}).toArray();
+                const products = await addProductCollection.find().sort({"price":-1}).toArray();
                 res.send(products);  
 
             }  else{
