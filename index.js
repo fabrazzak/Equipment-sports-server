@@ -54,13 +54,15 @@ async function run() {
          })
         //  no limit 
 
-         app.get('/products',  async(req, res) => {    
-            const query=req.query.sort;
-            if(query){
+         app.get('/products',  async(req, res) => {  
+           
+            const query=req.query.sort;           
+           
+            if(query == 'true'){
                 const products = await addProductCollection.find().sort({"price":1}).toArray();
                 res.send(products); 
 
-            }else if(query == false){
+            }else if(query == 'false'){
                 const products = await addProductCollection.find().sort({"price":-1}).toArray();
                 res.send(products);  
 
